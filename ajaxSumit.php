@@ -1,24 +1,26 @@
 <?php
 
-
 $name = $_POST['name'];
 $email = $_POST['email'];
-$message = $_POST['message'];
+$message = $_POST['messageField'];
 
-$header = "From:" . $email . "\r\n";
-$header .= "X-Mailer: PHP /" . phpversion() . "\r\n";
-$header .= "Mine Version 1.0 \r\n";
-$header .= "Content Type: text/plain";
+$header = 'From: ' . $email . " \r\n";
+$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+$header .=  "Mime-Version: 1.0  \r\n";
+$header .= "Content-Type: text/plain";
 
-$comment = "This message has been sent by " . $name . "\r\n";
-$comment = "His email address is " . $email . "\r\n";
-$comment = 'His message is: '$message . "\r\n";
+$comment .= "This message was sent by: " . $name . " \r\n";
+$comment .= "His email is: " . $email . " \r\n";
+$comment .= "The message is: ". $message ." \r\n";
 
-$for = "hareshkharwa@gmail.com";
-$subject = "contact from website address";
+$for = 'hareshkharwa@gmail.com';
+$subject = 'You have a new email from your website!';
 
-mail($subject, utf8_decode($comment), $header);
+mail($for, $subject, utf8_decode($comment), $header);
+
+// server response!
+$nombre = $_POST['nombre'];
 
 echo json_encode(array(
-    'Message' => sprintf("Your message has been sent %s", $name);
+	'message' => sprintf('Your email has been received %s', $name),
 ));

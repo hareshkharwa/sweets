@@ -104,10 +104,11 @@ $(document).ready(function(){
         var bv = $form.data('bootstrapValidator');
         
         $.post($form.attr('action'),$form.serialize(), function(result) {
+            $('#ok').fadeIn();
             console.log(result);
         },'json');
     });
-});
+ });
 
 smoothScroll.init({
     speed: 1000,
@@ -115,3 +116,4 @@ smoothScroll.init({
     updateURL: false,
     offset: 100,
 });
+    
