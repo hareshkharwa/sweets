@@ -365,7 +365,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <form id="form" action="ajaxSubmit.php" method="post" enctype="text/plain">
+                    <form id="form" action="ajaxSubmit.php" method="post">
                         <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" required>
                             </div>
@@ -378,7 +378,9 @@
                         <div class="form-group">
                     <input class="btn btn-default" type="submit" value="Send">
                         </div>    
-                    
+                         <div id="ok">
+                          Your message has been sent successfully. Thanks!
+                        </div>
                     </form>
                 
                 </div>
