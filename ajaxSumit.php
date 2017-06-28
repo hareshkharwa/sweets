@@ -1,15 +1,26 @@
-<?PHP
-$email = $_POST["email"];
-$to = "hareshkharwa@gmail.com";
-$subject = "New Email Address for Mailing List";
-$headers = "From: $email\n";
-$message = "A visitor to your site has sent the following email address to be added to your mailing list.\n
+<?php
 
-Email Address: $email";
-$user = "$email";
-$usersubject = "Thank You";
-$userheaders = "From: bookings@carinmumbai.com\n";
-$usermessage = "Thank you for subscribing to our mailing list.";
-mail($to,$subject,$message,$headers);
-mail($user,$usersubject,$usermessage,$userheaders);
-?>
+$name = $_POST['name'];
+$email = $_POST['email'];
+$message = $_POST['messageField'];
+
+$header = 'From: ' . $email . " \r\n";
+$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+$header .=  "Mime-Version: 1.0  \r\n";
+$header .= "Content-Type: text/plain";
+
+$comment .= "This message was sent by: " . $name . " \r\n";
+$comment .= "His email is: " . $email . " \r\n";
+$comment .= "The message is: ". $message ." \r\n";
+
+$for = 'hareshkharwa@gmail.com';
+$subject = 'You have a new email from your website!';
+
+mail($for, $subject, utf8_decode($comment), $header);
+
+// server response!
+$nombre = $_POST['nombre'];
+
+echo json_encode(array(
+	'message' => sprintf('Your email has been received %s', $name),
+));
