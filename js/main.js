@@ -108,8 +108,7 @@ $(document).ready(function(){
 				}, 'json' );
 
 			});
-    
-    });
+     });
 
 smoothScroll.init({
     speed: 1000,
