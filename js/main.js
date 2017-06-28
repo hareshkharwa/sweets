@@ -63,52 +63,51 @@ $(document).ready(function(){
     });
     
     $('#form').bootstrapValidator({
-        message: 'This value is not valid',
+        message: "That´s no valid!",
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                }
-            },
-            email: {
-                validator: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    emailAddress: {
-                        message: 'This input is not a valid email address'
-                    }
-                }
-            },
-            message: {
-                validator: {
-                    notEmpty: {
-                        message: 'Who sends an empty message???'
-                    }
-                }
-            }
-            
-        }
-    }).on('success.form.bv', function(e){
-        e.preventDefault();
-        
-        var $form = $(e.target);
-        
-        var bv = $form.data('bootstrapValidator');
-        
-        $.post($form.attr('action'),$form.serialize(), function(result) {
-            $('#ok').fadeIn();
-            console.log(result);
-        },'json');
-    });
- });
+					name: {
+						validators: {
+							notEmpty: {
+								message: "This field is mandatory and cannot be empty"
+							},
+						}
+					},
+					email: {
+						validators: {
+							notEmpty: {
+								message: "This field is mandatory and cannot be empty"
+							},
+							emailAddress: {
+								message: "That doesn´t look like an e-mail address"
+							}
+						}
+					},
+					messageField: {
+						validators: {
+							notEmpty: {
+								message: "The Message Cannot be empty!"
+							}
+						}
+					}
+				}
+			}).on('success.form.bv', function(e) {
+				e.preventDefault();
+
+				var $form = $(e.target);
+
+				var bv = $form.data('bootstrapValidator');
+
+				$.post($form.attr('action'), $form.serialize(), function(result) {
+					$('#ok').fadeIn();
+					console.log(result);
+				}, 'json' );
+
+			});
 
 smoothScroll.init({
     speed: 1000,
